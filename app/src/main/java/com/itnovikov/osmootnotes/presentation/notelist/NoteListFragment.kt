@@ -41,8 +41,10 @@ class NoteListFragment
         tagFiltersAdapter.setOnFilterClick {
             if (it.isClicked) {
                 viewModel.clickTag(it, false)
+                viewModel.updateFilter(tag = Pair(it, false))
             } else {
                 viewModel.clickTag(it, true)
+                viewModel.updateFilter(tag = Pair(it, true))
             }
             binding.rvTagFilters.adapter = tagFiltersAdapter
         }
@@ -77,6 +79,12 @@ class NoteListFragment
                 binding.rvNotes.visibility = View.VISIBLE
                 notesAdapter.submitList(it)
             }
+        }
+
+        viewModel.dataFilter.observe { filter ->
+            val filteredListNote = viewModel.filteredListNote(filter)
+
+            if (filteredListNote != null) notesAdapter.submitList(filteredListNote)
         }
     }
 
