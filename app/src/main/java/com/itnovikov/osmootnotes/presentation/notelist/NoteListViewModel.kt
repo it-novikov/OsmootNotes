@@ -22,14 +22,13 @@ class NoteListViewModel @Inject constructor(
     private val _dataFilter = MutableLiveData(MainFilter())
     val dataFilter: LiveData<MainFilter> = _dataFilter
 
+    fun getStartNotes() = notes.value
 
-    fun updateFilter(tag: Pair<Tag, Boolean>, isActive: Boolean = false) {
+    fun updateFilter(tag: Pair<Tag, Boolean>) {
         val filter = _dataFilter.value
 
         if (tag.second) filter?.listTags?.add(tag.first)
         else filter?.listTags?.remove(tag.first)
-
-        filter?.isActive = isActive
 
         _dataFilter.value = filter
     }
@@ -41,19 +40,21 @@ class NoteListViewModel @Inject constructor(
     fun filteredListNote(filter: MainFilter): List<Note>? {
 
         val listNote = notes.value
-        val listFilterTags: MutableList<Tag>? = filter.listTags
+        val listFilterTags: MutableList<Tag> = filter.listTags
 
-        val tagsNames : MutableList<String>? = listFilterTags?.map { it.name }?.toMutableList()
+        val tagsNames : MutableList<String> = listFilterTags.map { it.name }.toMutableList()
 
-        listNote?.filter { note ->
-            val listTags = note.tags.split(", ")
-            listTags.any { tag1 -> tagsNames?.contains(tag1) == true }
+        val data = listNote?.filter { note ->
+            val listTags = note.tags.trim().split(", ")
+
+            listTags.any { tag1 -> tagsNames.contains(tag1) }
         }
-        return listNote
+
+        return data
     }
 }
 
 data class MainFilter(
     var isActive: Boolean = false,
-    val listTags: MutableList<Tag>? = null
+    val listTags: MutableList<Tag> = mutableListOf()
 )
