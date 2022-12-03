@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Osmoot Notes</string>
+    <string name="welcome">Добро пожаловать в\nOsmoot Notes</string>
+    <string name="tags">Тэги</string>
+    <string name="go_note">Перейти к заметке</string>
+    <string name="settings">Настройки</string>
+    <string name="already_recording">Что запишем?</string>
+    <string name="title">Заголовок</string>
+    <string name="text">Текст заметки</string>
+    <string name="do_you_want_add_new_tag">Хотите добавить новый тэг?</string>
+    <string name="tag_name">Название тэга</string>
+    <string name="add_tag">Добавить</string>
+    <string name="delete_note">Удалить заметку</string>
+    <string name="about_note">Информация о заметке</string>
+    <string name="off_ads">Выключить рекламу</string>
+    <string name="enable_dark_mode">Включить темную тему</string>
+    <string name="privacy_and_policy">Политика конфиденциальности и Условия использования</string>
+    <string name="contact_developer">Связь с разработчиком</string>
+    <string name="add_note_button">Кнопка добавления заметки</string>
+    <string name="save">Сохранить</string>
+    <string name="title_is_empty">Заполните заголовок заметки</string>
+    <string name="no_thanks">Нет, спасибо</string>
+    <string name="empty_tag_name">Заполните имя тэга!</string>
+    <string name="empty_note_list">Здесь пока пусто...\nДобавьте новую заметку скорее!</string>
+    <string name="date_of_creation">"Дата создания: "</string>
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Osmoot Notes</string>
+    <string name="welcome">Welcome to\nOsmoot Notes</string>
+    <string name="tags">Tags</string>
+    <string name="go_note">Go to the note</string>
+    <string name="settings">Settings</string>
+    <string name="already_recording">Already recording…</string>
+    <string name="title">Title</string>
+    <string name="text">Text</string>
+    <string name="add" translatable="false">+</string>
+    <string name="do_you_want_add_new_tag">Do you want to add a new tag?</string>
+    <string name="tag_name">Tag name</string>
+    <string name="add_tag">Add</string>
+    <string name="delete_note">Delete a note</string>
+    <string name="about_note">About the note</string>
+    <string name="off_ads">Turn off ads</string>
+    <string name="enable_dark_mode">Enable dark mode</string>
+    <string name="privacy_and_policy">Privacy Policy</string>
+    <string name="contact_developer">Contact developer</string>
+    <string name="add_note_button">Add note button</string>
+    <string name="save">Save</string>
+    <string name="title_is_empty">Title is empty</string>
+    <string name="no_thanks">No, thanks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_tag_name">Tag name is empty!</string>
+    <string name="empty_note_list">It\'s still empty here...\nAdd a new note soon!</string>
+    <string name="date_of_creation">"Date of creation: "</string>
+</resources>

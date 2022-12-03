@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/noteListFragment">
+
+
+    <fragment
+        android:id="@+id/detailedNoteFragment"
+        android:name="com.itnovikov.osmootnotes.presentation.detailednote.DetailedNoteFragment"
+        android:label="fragment_detailed_note"
+        tools:layout="@layout/fragment_detailed_note" />
+
+    <fragment
+        android:id="@+id/newNoteFragment"
+        android:name="com.itnovikov.osmootnotes.presentation.newnote.NewNoteFragment"
+        android:label="fragment_new_note"
+        tools:layout="@layout/fragment_new_note" />
+
+    <fragment
+        android:id="@+id/notesSettingsFragment"
+        android:name="com.itnovikov.osmootnotes.presentation.notesettings.NotesSettingsFragment"
+        android:label="fragment_notes_settings"
+        tools:layout="@layout/fragment_notes_settings" />
+
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.itnovikov.osmootnotes.presentation.notelist.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list" >
+
+        <action
+            android:id="@+id/action_noteListFragment2_to_notesSettingsFragment2"
+            app:destination="@id/notesSettingsFragment" />
+
+        <action
+            android:id="@+id/action_noteListFragment_to_newNoteFragment"
+            app:destination="@id/newNoteFragment" />
+
+        <action
+            android:id="@+id/action_noteListFragment_to_detailedNoteFragment"
+            app:destination="@id/detailedNoteFragment" />
+
+    </fragment>
+
+</navigation>

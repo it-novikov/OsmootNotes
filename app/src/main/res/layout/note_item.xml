@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_note_item"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewNoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/dark_blue"
+        android:textSize="17sp"
+        tools:text="Заголовок какой-то заметки" />
+
+    <TextView
+        android:id="@+id/textViewNoteTags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/proxima_nova_regular_italic"
+        android:textAlignment="textStart"
+        android:textColor="@color/dark_blue"
+        android:textSize="12sp"
+        tools:text="Тэги: Личное, Важное"
+        app:drawableStartCompat="@drawable/ic_tag" />
+
+    <TextView
+        android:id="@+id/textViewNoteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/proxima_nova_regular"
+        android:textAlignment="textStart"
+        android:textColor="@color/dark_blue"
+        android:textSize="14sp"
+        tools:text="Текст какой-то заметки" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonGoNote"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_go_note_button"
+        android:text="@string/go_note"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:textSize="14sp"/>
+
+</LinearLayout>
