@@ -7,6 +7,7 @@ import com.itnovikov.osmootnotes.data.local.room.model.Note
 import com.itnovikov.osmootnotes.data.local.room.model.Tag
 import com.itnovikov.osmootnotes.domain.usecases.GetNotesUseCase
 import com.itnovikov.osmootnotes.domain.usecases.GetTagsUseCase
+import com.itnovikov.osmootnotes.presentation.notelist.model.MainFilter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -53,8 +54,3 @@ class NoteListViewModel @Inject constructor(
         return data
     }
 }
-
-data class MainFilter(
-    var isActive: Boolean = false,
-    val listTags: MutableList<Tag> = mutableListOf()
-)
