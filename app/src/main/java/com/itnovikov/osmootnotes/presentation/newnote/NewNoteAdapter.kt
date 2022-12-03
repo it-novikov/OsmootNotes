@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itnovikov.osmootnotes.R
 import com.itnovikov.osmootnotes.data.local.room.model.Tag
-import com.itnovikov.osmootnotes.presentation.Resources
+import com.itnovikov.osmootnotes.presentation.core_ui.StatusTag
 
 class NewNoteAdapter : ListAdapter<Tag, NewNoteAdapter.TagsViewHolder>(NewNoteDiffCallback()) {
 
@@ -43,7 +43,7 @@ class NewNoteAdapter : ListAdapter<Tag, NewNoteAdapter.TagsViewHolder>(NewNoteDi
     }
 
     private fun setButtonClicked(viewHolder: TagsViewHolder) {
-        viewHolder.tagButton.setBackgroundResource(Resources.CLICKED_BG.res)
+        viewHolder.tagButton.setBackgroundResource(StatusTag.CLICKED_BG.res)
 
         viewHolder.tagButton.setTextColor(ContextCompat.getColor(
             viewHolder.tagButton.context,
@@ -62,7 +62,7 @@ class NewNoteAdapter : ListAdapter<Tag, NewNoteAdapter.TagsViewHolder>(NewNoteDi
     }
 
     private fun setButtonUnclicked(viewHolder: TagsViewHolder) {
-        viewHolder.tagButton.setBackgroundResource(Resources.UNCLICKED_BG.res)
+        viewHolder.tagButton.setBackgroundResource(StatusTag.UNCLICKED_BG.res)
 
         viewHolder.tagButton.setTextColor(ContextCompat.getColor(
             viewHolder.tagButton.context,

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.itnovikov.osmootnotes.R
 import com.itnovikov.osmootnotes.core.bases.BaseFragment
+import com.itnovikov.osmootnotes.core.extension.log
 import com.itnovikov.osmootnotes.data.local.room.model.Note
 import com.itnovikov.osmootnotes.databinding.FragmentNoteListBinding
 import com.itnovikov.osmootnotes.presentation.notelist.notes.NoteListAdapter
@@ -41,8 +42,10 @@ class NoteListFragment
         tagFiltersAdapter.setOnFilterClick {
             if (it.isClicked) {
                 viewModel.clickTag(it, false)
+                viewModel.updateFilter(tag = Pair(it, false))
             } else {
                 viewModel.clickTag(it, true)
+                viewModel.updateFilter(tag = Pair(it, true))
             }
             binding.rvTagFilters.adapter = tagFiltersAdapter
         }
@@ -68,7 +71,7 @@ class NoteListFragment
             }
         }
 
-        viewModel.notes.observe(viewLifecycleOwner) {
+        viewModel.notes.observe {
             if (it.isEmpty()) {
                 binding.textViewEmptyTagList.visibility = View.VISIBLE
                 binding.rvNotes.visibility = View.GONE
@@ -76,6 +79,18 @@ class NoteListFragment
                 binding.textViewEmptyTagList.visibility = View.GONE
                 binding.rvNotes.visibility = View.VISIBLE
                 notesAdapter.submitList(it)
+            }
+        }
+
+        viewModel.dataFilter.observe { filter ->
+
+            val data: List<Note>? = if(filter.listTags.size == 0) viewModel.getStartNotes()
+            else viewModel.filteredListNote(filter)
+
+            val filteredListNote: List<Note>? = data
+
+            if (filteredListNote != null) {
+                notesAdapter.submitList(filteredListNote)
             }
         }
     }
