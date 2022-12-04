@@ -39,8 +39,18 @@ class NewNoteViewModel @Inject constructor(
         return shouldCloseScreen
     }
 
-    fun addTag(tag: Tag) {
+    fun addTagToDatabase(tag: Tag) {
         viewModelScope.launch { addTagUseCase.addTag(tag) }
+    }
+
+    fun getTagsFromDatabase(): List<String> {
+        val namesList = arrayListOf<String>()
+        if (tags.value != null) {
+            for (tag in tags.value!!) {
+                namesList.add(tag.name)
+            }
+        }
+        return namesList
     }
 
     fun clickTag(tag: Tag, isClicked: Boolean) {
@@ -55,7 +65,7 @@ class NewNoteViewModel @Inject constructor(
         tagsArray.remove(tag)
     }
 
-    fun getTagsList(): String {
+    fun getNoteTagsList(): String {
         val arrayOfNames = arrayListOf<String>()
         for (tag in tagsArray) {
             arrayOfNames.add(tag.name)

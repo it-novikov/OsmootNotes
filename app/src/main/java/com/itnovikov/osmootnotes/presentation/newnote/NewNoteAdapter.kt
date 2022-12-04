@@ -33,9 +33,8 @@ class NewNoteAdapter : ListAdapter<Tag, NewNoteAdapter.TagsViewHolder>(NewNoteDi
         val tag = getItem(position)
         holder.tagButton.text = tag.name
         holder.tagButton.setOnClickListener { onTagClick?.invoke(tag) }
-        if (tag.isClicked) {
-            setButtonClicked(holder)
-        } else setButtonUnclicked(holder)
+        if (tag.isClicked) setButtonClicked(holder)
+        else setButtonUnclicked(holder)
     }
 
     fun setOnTagClick(function: ((Tag) -> Unit)?) {

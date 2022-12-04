@@ -22,6 +22,7 @@
     <string name="title_is_empty">Заполните заголовок заметки</string>
     <string name="no_thanks">Нет, спасибо</string>
     <string name="empty_tag_name">Заполните имя тэга!</string>
-    <string name="empty_note_list">Здесь пока пусто...\nДобавьте новую заметку скорее!</string>
+    <string name="empty_note_list">Здесь пока пусто…\nДобавьте новую заметку скорее!</string>
     <string name="date_of_creation">"Дата создания: "</string>
+    <string name="tag_already_created">Тэг с таким именем уже существует. Попробуйте другое!</string>
 </resources>

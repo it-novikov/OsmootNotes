@@ -38,13 +38,14 @@ class NewNoteFragment
     private fun initCallbacks() {
         adapter.setOnTagClick {
             if (it.isClicked) {
-                viewModel.clickTag(it, !it.isClicked)
                 viewModel.removeTagFromNote(it)
-            } else {
                 viewModel.clickTag(it, !it.isClicked)
+                binding.rvTags.adapter = adapter
+            } else {
                 viewModel.newTagToNote(it)
+                viewModel.clickTag(it, !it.isClicked)
+                binding.rvTags.adapter = adapter
             }
-            binding.rvTags.adapter = adapter
         }
     }
 
@@ -72,8 +73,9 @@ class NewNoteFragment
         binding.buttonSaveNote.setOnClickListener {
             val title = binding.editTextNoteTitle.text.toString().trim()
             val description = binding.editTextNoteDescription.text.toString().trim()
-            val tags = viewModel.getTagsList()
+            val tags = viewModel.getNoteTagsList()
             val currentDate = getString(R.string.date_of_creation) + viewModel.getCurrentDate()
+
             if (title.isNotEmpty()) {
                 val note = Note(
                     title = title,
@@ -90,9 +92,7 @@ class NewNoteFragment
 
     private fun createAlertDialog() {
         val builder = AlertDialog.Builder(context)
-
         val alertDialogView: View = layoutInflater.inflate(R.layout.alert_dialog_new_tag, null)
-
         val emptyName = alertDialogView.findViewById<TextView>(R.id.textViewEmptyTagName)
 
         builder.setView(alertDialogView)
@@ -104,10 +104,18 @@ class NewNoteFragment
             val tagName = alertDialogView.findViewById<TextInputEditText>(R.id.editTextNewTag)
             val tag = Tag(name = tagName.text.toString().trim(), isClicked = false)
             if (tagName.text?.trim()?.isNotEmpty() == true) {
-                viewModel.addTag(tag)
-                emptyName.visibility = View.GONE
-                alert.cancel()
-            } else emptyName.visibility = View.VISIBLE
+                if (!viewModel.getTagsFromDatabase().contains(tag.name)) {
+                    viewModel.addTagToDatabase(tag)
+                    emptyName.visibility = View.GONE
+                    alert.cancel()
+                } else {
+                    emptyName.text = getString(R.string.tag_already_created)
+                    emptyName.visibility = View.VISIBLE
+                }
+            } else {
+                emptyName.text = getString(R.string.empty_tag_name)
+                emptyName.visibility = View.VISIBLE
+            }
         }
 
         val dismissButton = alertDialogView.findViewById<AppCompatButton>(R.id.buttonDenyNewTag)
@@ -121,9 +129,7 @@ class NewNoteFragment
 
     private fun closeScreen() {
         viewModel.getShouldCloseScreen().observe(viewLifecycleOwner) {
-            if (it) {
-                navigateUp()
-            }
+            if (it) navigateUp()
         }
     }
 }

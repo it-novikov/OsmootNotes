@@ -21,9 +21,8 @@
     <string name="save">Save</string>
     <string name="title_is_empty">Title is empty</string>
     <string name="no_thanks">No, thanks</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="empty_tag_name">Tag name is empty!</string>
-    <string name="empty_note_list">It\'s still empty here...\nAdd a new note soon!</string>
+    <string name="empty_note_list">It\'s still empty here…\nAdd a new note soon!</string>
     <string name="date_of_creation">"Date of creation: "</string>
+    <string name="tag_already_created">A tag with that name already exists. Try something else!</string>
 </resources>
