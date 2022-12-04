@@ -12,14 +12,14 @@
     <string name="tag_name">Tag name</string>
     <string name="add_tag">Add</string>
     <string name="delete_note">Delete a note</string>
-    <string name="about_note">About the note</string>
+    <string name="about_note">About\nthe note</string>
     <string name="off_ads">Turn off ads</string>
     <string name="enable_dark_mode">Enable dark mode</string>
     <string name="privacy_and_policy">Privacy Policy</string>
     <string name="contact_developer">Contact developer</string>
     <string name="add_note_button">Add note button</string>
     <string name="save">Save</string>
-    <string name="title_is_empty">Title is empty</string>
+    <string name="title_is_empty">Title is empty!</string>
     <string name="no_thanks">No, thanks</string>
     <string name="empty_tag_name">Tag name is empty!</string>
     <string name="empty_note_list">It\'s still empty here…\nAdd a new note soon!</string>
@@ -28,4 +28,5 @@
     <string name="back">Back</string>
     <string name="edit_note">Edit note</string>
     <string name="editing">Already editing…</string>
+    <string name="text_empty">Text is empty!</string>
 </resources>

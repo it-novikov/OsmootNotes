@@ -1,10 +1,12 @@
 package com.itnovikov.osmootnotes.presentation.detailednote
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.itnovikov.osmootnotes.R
 import com.itnovikov.osmootnotes.core.bases.BaseFragment
+import com.itnovikov.osmootnotes.core.extension.log
 import com.itnovikov.osmootnotes.data.local.room.model.Note
 import com.itnovikov.osmootnotes.databinding.FragmentDetailedNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +16,8 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
     (FragmentDetailedNoteBinding::inflate) {
 
     override val viewModel: DetailedNoteViewModel by viewModels()
+
+    private var idOfCurrentNote: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,9 +31,17 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
         val text = noteData?.getString("text")
         val tags = noteData?.getString("tags")
         val date = noteData?.getString("date")
+        val id = noteData?.getString("id")
+        idOfCurrentNote = id?.trim()?.toInt() ?: 0
+        log(message = "idOfCurrentNote = $idOfCurrentNote")
         binding.textViewDetailedNoteTitle.text = title
         binding.textViewDetailedNoteText.text = text
-        binding.textViewDetailedNoteTags.text = tags
+        if (tags == null) {
+            binding.textViewDetailedNoteTags.visibility = View.GONE
+        } else {
+            binding.textViewDetailedNoteTags.text = tags
+            binding.textViewDetailedNoteTags.visibility = View.VISIBLE
+        }
         binding.textViewNoteCreationDate.text = date
     }
 
@@ -48,19 +60,18 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
         binding.buttonBackOnDetailedNote.setOnClickListener { navigateUp() }
 
         binding.buttonEditNote.setOnClickListener {
-            val id = noteData?.getString("id")
             val title = noteData?.getString("title")
             val text = noteData?.getString("text")
             val tags = noteData?.getString("tags")
             val date = noteData?.getString("date")
-
             val note = Note(
-                id = id?.toInt() ?: 0,
+                id = idOfCurrentNote,
                 title = title ?: "",
                 text = text ?: "",
                 tags = tags ?: "",
                 dateOfCreation = date ?: ""
             )
+
             val bundle = createBundle(note)
             navigateTo(R.id.newNoteFragment, bundle)
         }

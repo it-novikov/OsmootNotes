@@ -2,6 +2,7 @@ package com.itnovikov.osmootnotes.presentation.newnote
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -69,7 +70,8 @@ class NewNoteFragment
             if (arguments == null) adapter.submitList(it)
             else {
                 val noteData = arguments
-                val clickedTagsList = noteData?.getString("tags")?.split(", ")
+                val clickedTagsList = noteData?.getString("tags")?.trim()?.split(", ")
+                Log.d("TAG", "clicked tags: $clickedTagsList")
                 for (tag in it) {
                     if (clickedTagsList != null) {
                         for (clickedTag in clickedTagsList) {
@@ -105,7 +107,10 @@ class NewNoteFragment
             val tags = viewModel.getNoteTagsList()
             val currentDate = getString(R.string.date_of_creation) + viewModel.getCurrentDate()
             val id = arguments?.getString("id")?.trim()?.toInt() ?: 0
-            if (title.isNotEmpty()) {
+            Log.d("TAG", "id: $id")
+            if (title.isEmpty()) showSnackbar(getString(R.string.title_is_empty))
+            else if (description.isEmpty()) showSnackbar(getString(R.string.text_empty))
+            else {
                 val note = Note(
                     id = id,
                     title = title,
@@ -114,8 +119,7 @@ class NewNoteFragment
                     dateOfCreation = currentDate
                 )
                 lifecycleScope.launch { viewModel.addNote(note) }
-            } else showSnackbar(getString(R.string.title_is_empty))
-
+            }
             closeScreen()
         }
     }

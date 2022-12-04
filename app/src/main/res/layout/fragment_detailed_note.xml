@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/toolbarAboutNote"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
