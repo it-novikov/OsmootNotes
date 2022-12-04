@@ -1,4 +1,4 @@
-package com.itnovikov.osmootnotes.presentation.core_ui
+package com.itnovikov.osmootnotes.presentation.core
 
 import com.itnovikov.osmootnotes.R
 

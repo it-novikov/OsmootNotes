@@ -12,5 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="dark_blue_color">@color/global_background</item>
+        <item name="global_background_color">@color/dark_blue</item>
+        <item name="light_blue_color">@color/light_blue</item>
+        <item name="light_gray_color">@color/light_gray</item>
+        <item name="highlighted_text_color">@color/highlighted_text</item>
+        <item name="button_and_subtitles_color">@color/button_and_subtitles</item>
+        <item name="elements_background_color">@color/dark_blue</item>
+        <item name="subelements_background_color">@color/dark_blue</item>
+        <item name="black_with_alpha_color">@color/white</item>
+        <item name="clicked_tags_background_color">@color/button_and_subtitles</item>
     </style>
 </resources>

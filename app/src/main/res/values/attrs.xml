@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds">
+        <attr name="dark_blue_color" format="color"/>
+        <attr name="global_background_color" format="color"/>
+        <attr name="light_blue_color" format="color"/>
+        <attr name="elements_background_color" format="color"/>
+        <attr name="light_gray_color" format="color"/>
+        <attr name="button_and_subtitles_color" format="color"/>
+        <attr name="highlighted_text_color" format="color"/>
+        <attr name="subelements_background_color" format="color"/>
+        <attr name="black_with_alpha_color" format="color"/>
+        <attr name="clicked_tags_background_color" format="color"/>
+    </declare-styleable>
+</resources>

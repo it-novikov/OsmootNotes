@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.itnovikov.osmootnotes.R
 import com.itnovikov.osmootnotes.data.local.room.model.Tag
-import com.itnovikov.osmootnotes.presentation.core_ui.StatusTag
+import com.itnovikov.osmootnotes.presentation.core.StatusTag
 
 class NewNoteAdapter : ListAdapter<Tag, NewNoteAdapter.TagsViewHolder>(NewNoteDiffCallback()) {
 

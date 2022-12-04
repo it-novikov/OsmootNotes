@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/global_background"
+    android:background="?attr/global_background_color"
     tools:context=".presentation.notelist.NoteListFragment">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@color/global_background"
+            android:background="?attr/global_background_color"
             android:gravity="center">
 
             <TextView
@@ -36,13 +36,13 @@
                 android:layout_marginEnd="12dp"
                 android:fontFamily="@font/proxima_nova_bold"
                 android:text="@string/welcome"
-                android:textSize="20sp"
-                android:textColor="@color/dark_blue"/>
+                android:textSize="24sp"
+                android:textColor="?attr/dark_blue_color"/>
 
             <ImageView
                 android:id="@+id/buttonSettings"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/ic_settings"
                 android:clickable="true"
@@ -52,28 +52,29 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewEmptyTagList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAllCaps="false"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            android:visibility="visible"
-            android:fontFamily="@font/proxima_nova_regular_italic"
-            android:text="@string/empty_note_list"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTagFilters"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="44dp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
             tools:listitem="@layout/tag_item"/>
+
+        <TextView
+            android:id="@+id/textViewEmptyTagList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="?attr/dark_blue_color"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:fontFamily="@font/proxima_nova_regular_italic"
+            android:text="@string/empty_note_list"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNotes"

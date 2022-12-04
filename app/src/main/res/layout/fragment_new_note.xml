@@ -3,22 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/global_background"
+    android:background="?attr/global_background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.newnote.NewNoteFragment">
 
     <LinearLayout
         android:id="@+id/toolbarNewNote"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/global_background"
+        android:background="?attr/global_background_color"
         android:gravity="center">
 
+        <ImageView
+            android:id="@+id/buttonBackOnNewNote"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_back"
+            android:clickable="true"
+            android:contentDescription="@string/back"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <TextView
+            android:id="@+id/textViewNewNoteToolbarTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -28,8 +40,8 @@
             android:layout_marginEnd="12dp"
             android:fontFamily="@font/proxima_nova_bold"
             android:text="@string/already_recording"
-            android:textSize="20sp"
-            android:textColor="@color/dark_blue"/>
+            android:textSize="24sp"
+            android:textColor="?attr/dark_blue_color"/>
 
     </LinearLayout>
 
@@ -43,7 +55,6 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarNewNote"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:boxStrokeColor="@color/dark_blue"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/title">
 
@@ -64,7 +75,6 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextNoteTitleLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:boxStrokeColor="@color/dark_blue"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/text">
 
@@ -87,14 +97,14 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonAddTag"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginStart="12dp"
             android:elevation="1dp"
             android:text="@string/add"
             android:textAlignment="center"
             android:fontFamily="@font/proxima_nova_bold"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textColor="@color/dark_blue"
             android:background="@drawable/add_tag_button"/>
 
@@ -109,14 +119,14 @@
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonSaveNote"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginTop="12dp"
-        android:backgroundTint="@color/dark_blue"
+        android:background="@drawable/bg_save_note_button"
         app:layout_constraintTop_toBottomOf="@+id/layoutTags"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

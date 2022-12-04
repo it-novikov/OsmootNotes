@@ -73,7 +73,9 @@ class NoteListFragment
         viewModel.notes.observe {
             if (it.isEmpty()) {
                 hideRV()
+                binding.textViewEmptyTagList.visibility = View.VISIBLE
             } else {
+                binding.textViewEmptyTagList.visibility = View.GONE
                 showRV(it)
             }
         }

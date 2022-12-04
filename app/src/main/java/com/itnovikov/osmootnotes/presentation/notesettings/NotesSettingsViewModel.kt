@@ -2,7 +2,6 @@ package com.itnovikov.osmootnotes.presentation.notesettings
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModel
@@ -21,6 +20,7 @@ class NotesSettingsViewModel @Inject constructor() : ViewModel() {
         val editor = context.getSharedPreferences("prefs", Context.MODE_PRIVATE).edit()
         with (editor) {
             putInt("dark_mode", 1)
+            putInt("switch_state_dark_mode", 1)
             apply()
         }
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -30,6 +30,7 @@ class NotesSettingsViewModel @Inject constructor() : ViewModel() {
         val editor = context.getSharedPreferences("prefs", Context.MODE_PRIVATE).edit()
         with (editor) {
             putInt("dark_mode", 0)
+            putInt("switch_state_dark_mode", 0)
             apply()
         }
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

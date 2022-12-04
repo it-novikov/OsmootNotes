@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.notesettings.NotesSettingsFragment"
-    android:background="@color/global_background">
+    android:background="?attr/global_background_color">
 
     <LinearLayout
         android:id="@+id/toolbarNotesSettings"
@@ -17,6 +17,17 @@
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="center">
 
+        <ImageView
+            android:id="@+id/buttonBackOnSettings"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_back"
+            android:clickable="true"
+            android:contentDescription="@string/back"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,12 +38,12 @@
             android:layout_marginEnd="12dp"
             android:fontFamily="@font/proxima_nova_bold"
             android:text="@string/settings"
-            android:textSize="20sp"
-            android:textColor="@color/dark_blue"/>
+            android:textSize="24sp"
+            android:textColor="?attr/dark_blue_color"/>
 
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewAds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +52,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        app:cardBackgroundColor="@color/elements_background"
+        app:cardBackgroundColor="?attr/elements_background_color"
+        app:strokeColor="@color/elements_background"
+        app:strokeWidth="1dp"
         app:cardElevation="2dp">
 
         <LinearLayout
@@ -56,8 +69,8 @@
                 android:layout_margin="12dp"
                 android:text="@string/off_ads"
                 android:fontFamily="@font/proxima_nova_semibold"
-                android:textColor="@color/dark_blue"
-                android:textSize="16sp"
+                android:textColor="?attr/dark_blue_color"
+                android:textSize="20sp"
                 android:gravity="center_vertical"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -72,9 +85,9 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewDarkTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +97,9 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        app:cardBackgroundColor="@color/elements_background"
+        app:cardBackgroundColor="?attr/elements_background_color"
+        app:strokeColor="@color/elements_background"
+        app:strokeWidth="1dp"
         app:cardElevation="2dp">
 
         <LinearLayout
@@ -99,8 +114,8 @@
                 android:layout_margin="12dp"
                 android:text="@string/enable_dark_mode"
                 android:fontFamily="@font/proxima_nova_semibold"
-                android:textColor="@color/dark_blue"
-                android:textSize="16sp"
+                android:textColor="?attr/dark_blue_color"
+                android:textSize="20sp"
                 android:gravity="center_vertical"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -115,9 +130,9 @@
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewPrivacyAndPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,7 +142,9 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        app:cardBackgroundColor="@color/elements_background"
+        app:cardBackgroundColor="?attr/elements_background_color"
+        app:strokeColor="@color/elements_background"
+        app:strokeWidth="1dp"
         app:cardElevation="2dp"
         android:clickable="true"
         android:focusable="true">
@@ -144,13 +161,13 @@
                 android:layout_margin="12dp"
                 android:text="@string/privacy_and_policy"
                 android:fontFamily="@font/proxima_nova_semibold"
-                android:textColor="@color/dark_blue"
-                android:textSize="16sp"
+                android:textColor="?attr/dark_blue_color"
+                android:textSize="20sp"
                 android:gravity="center_vertical"/>
 
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonContactDeveloper"
@@ -158,10 +175,10 @@
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_marginTop="12dp"
-        android:background="@color/global_background"
+        android:background="?attr/global_background_color"
         android:text="@string/contact_developer"
-        android:textColor="@color/highlighted_text"
-        android:textSize="12sp"
+        android:textColor="?attr/dark_blue_color"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardViewPrivacyAndPolicy"

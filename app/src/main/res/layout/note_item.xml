@@ -17,8 +17,8 @@
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/proxima_nova_bold"
         android:textAlignment="textStart"
-        android:textColor="@color/dark_blue"
-        android:textSize="17sp"
+        android:textColor="?attr/dark_blue_color"
+        android:textSize="24sp"
         tools:text="Заголовок какой-то заметки" />
 
     <TextView
@@ -30,8 +30,8 @@
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/proxima_nova_regular_italic"
         android:textAlignment="textStart"
-        android:textColor="@color/dark_blue"
-        android:textSize="12sp"
+        android:textColor="?attr/dark_blue_color"
+        android:textSize="20sp"
         tools:text="Тэги: Личное, Важное"
         app:drawableStartCompat="@drawable/ic_tag" />
 
@@ -44,19 +44,19 @@
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/proxima_nova_regular"
         android:textAlignment="textStart"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
+        android:textColor="?attr/dark_blue_color"
+        android:textSize="20sp"
         tools:text="Текст какой-то заметки" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonGoNote"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:background="@drawable/bg_go_note_button"
         android:text="@string/go_note"
-        android:textColor="@color/dark_blue"
+        android:textColor="?attr/dark_blue_color"
         android:fontFamily="@font/proxima_nova_bold"
-        android:textSize="14sp"/>
+        android:textSize="17sp"/>
 
 </LinearLayout>

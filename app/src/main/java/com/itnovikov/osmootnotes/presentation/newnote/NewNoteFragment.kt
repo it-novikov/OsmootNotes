@@ -16,6 +16,7 @@ import com.itnovikov.osmootnotes.databinding.FragmentNewNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class NewNoteFragment
     : BaseFragment<FragmentNewNoteBinding, NewNoteViewModel>(FragmentNewNoteBinding::inflate) {
@@ -28,6 +29,20 @@ class NewNoteFragment
         initRV()
         observeViewModel()
         configureButtons()
+        setData()
+    }
+
+    private fun setData() {
+        val noteData = arguments
+        if (noteData != null) {
+            binding.textViewNewNoteToolbarTitle.text = getString(R.string.editing)
+            binding.editTextNoteTitle.setText(noteData.getString("title"))
+            binding.editTextNoteDescription.setText(noteData.getString("text"))
+        } else {
+            binding.textViewNewNoteToolbarTitle.text = getString(R.string.already_recording)
+            binding.editTextNoteTitleLayout.hint = getString(R.string.title)
+            binding.editTextNoteDescriptionLayout.hint = getString(R.string.text)
+        }
     }
 
     private fun initRV() {
@@ -50,13 +65,27 @@ class NewNoteFragment
     }
 
     private fun observeViewModel() {
-        viewModel.tags.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+        viewModel.tags.observe {
+            if (arguments == null) adapter.submitList(it)
+            else {
+                val noteData = arguments
+                val clickedTagsList = noteData?.getString("tags")?.split(", ")
+                for (tag in it) {
+                    if (clickedTagsList != null) {
+                        for (clickedTag in clickedTagsList) {
+                            if (tag.name == clickedTag) {
+                                tag.isClicked = true
+                            }
+                        }
+                    }
+                }
+                adapter.submitList(it)
+            }
         }
     }
 
     private fun configureButtons() {
-        configureTagButtons()
+        configureBackButtons()
         configureSaveNoteButton()
         configureAddTagButton()
     }
@@ -65,8 +94,8 @@ class NewNoteFragment
         binding.buttonAddTag.setOnClickListener { createAlertDialog() }
     }
 
-    private fun configureTagButtons() {
-
+    private fun configureBackButtons() {
+        binding.buttonBackOnNewNote.setOnClickListener { navigateUp() }
     }
 
     private fun configureSaveNoteButton() {
@@ -75,9 +104,10 @@ class NewNoteFragment
             val description = binding.editTextNoteDescription.text.toString().trim()
             val tags = viewModel.getNoteTagsList()
             val currentDate = getString(R.string.date_of_creation) + viewModel.getCurrentDate()
-
+            val id = arguments?.getString("id")?.trim()?.toInt() ?: 0
             if (title.isNotEmpty()) {
                 val note = Note(
+                    id = id,
                     title = title,
                     text = description,
                     tags = tags,
@@ -103,6 +133,7 @@ class NewNoteFragment
         addButton.setOnClickListener {
             val tagName = alertDialogView.findViewById<TextInputEditText>(R.id.editTextNewTag)
             val tag = Tag(name = tagName.text.toString().trim(), isClicked = false)
+
             if (tagName.text?.trim()?.isNotEmpty() == true) {
                 if (!viewModel.getTagsFromDatabase().contains(tag.name)) {
                     viewModel.addTagToDatabase(tag)

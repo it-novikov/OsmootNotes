@@ -15,8 +15,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/global_background"
+        android:background="?attr/global_background_color"
         android:gravity="center">
+
+        <ImageView
+            android:id="@+id/buttonBackOnDetailedNote"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_back"
+            android:clickable="true"
+            android:contentDescription="@string/back"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:layout_width="0dp"
@@ -28,17 +39,28 @@
             android:layout_marginEnd="12dp"
             android:fontFamily="@font/proxima_nova_bold"
             android:text="@string/about_note"
-            android:textSize="20sp"
-            android:textColor="@color/dark_blue"/>
+            android:textSize="24sp"
+            android:textColor="?attr/dark_blue_color"/>
 
         <ImageView
             android:id="@+id/buttonDeleteNote"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/ic_trash"
             android:clickable="true"
             android:contentDescription="@string/delete_note"
+            android:focusable="true"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/buttonEditNote"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/ic_edit"
+            android:clickable="true"
+            android:contentDescription="@string/edit_note"
             android:focusable="true"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -55,9 +77,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Заголовок какой-то заметки"
-        android:textSize="23sp"
+        android:textSize="24sp"
         android:fontFamily="@font/proxima_nova_bold"
-        android:textColor="@color/dark_blue" />
+        android:textColor="?attr/dark_blue_color" />
 
     <TextView
         android:id="@+id/textViewDetailedNoteTags"
@@ -71,8 +93,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:drawableLeftCompat="@drawable/ic_tag"
         tools:text="Тэги: Личное, Важное"
-        android:textColor="@color/dark_blue"
-        android:textSize="15sp"
+        android:textColor="?attr/dark_blue_color"
+        android:textSize="20sp"
         android:fontFamily="@font/proxima_nova_regular_italic"/>
 
     <TextView
@@ -86,9 +108,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewDetailedNoteTags"
         tools:text="Текст какой-то не очень большой, но очень интересной заметки."
-        android:textSize="17sp"
+        android:textSize="20sp"
         android:fontFamily="@font/proxima_nova_regular"
-        android:textColor="@color/dark_blue" />
+        android:textColor="?attr/dark_blue_color" />
 
     <TextView
         android:id="@+id/textViewNoteCreationDate"
@@ -101,9 +123,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Дата создания: 29.11.2022 16:26"
-        android:textSize="12sp"
+        android:textSize="18sp"
         android:fontFamily="@font/proxima_nova_regular"
-        android:textColor="@color/black"
+        android:textColor="?attr/black_with_alpha_color"
         android:alpha="0.38"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

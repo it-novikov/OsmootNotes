@@ -25,4 +25,7 @@
     <string name="empty_note_list">Здесь пока пусто…\nДобавьте новую заметку скорее!</string>
     <string name="date_of_creation">"Дата создания: "</string>
     <string name="tag_already_created">Тэг с таким именем уже существует. Попробуйте другое!</string>
+    <string name="back">Назад</string>
+    <string name="edit_note">Редактировать заметку</string>
+    <string name="editing">Уже редактирую…</string>
 </resources>

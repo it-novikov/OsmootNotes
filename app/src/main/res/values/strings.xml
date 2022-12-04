@@ -25,4 +25,7 @@
     <string name="empty_note_list">It\'s still empty here…\nAdd a new note soon!</string>
     <string name="date_of_creation">"Date of creation: "</string>
     <string name="tag_already_created">A tag with that name already exists. Try something else!</string>
+    <string name="back">Back</string>
+    <string name="edit_note">Edit note</string>
+    <string name="editing">Already editing…</string>
 </resources>
