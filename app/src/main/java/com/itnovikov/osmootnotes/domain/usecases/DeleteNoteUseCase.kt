@@ -5,7 +5,7 @@ import javax.inject.Inject
 
 class DeleteNoteUseCase @Inject constructor(private val repository: NotesRepository) {
 
-    suspend fun deleteNote(id: Int) {
+    suspend fun deleteNote(id: String) {
         repository.deleteNote(id)
     }
 }

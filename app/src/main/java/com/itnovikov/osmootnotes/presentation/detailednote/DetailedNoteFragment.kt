@@ -1,7 +1,6 @@
 package com.itnovikov.osmootnotes.presentation.detailednote
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.itnovikov.osmootnotes.R
@@ -17,12 +16,13 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
 
     override val viewModel: DetailedNoteViewModel by viewModels()
 
-    private var idOfCurrentNote: Int = 0
+    private var idOfCurrentNote: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureButtons()
         setData()
+        log(message = "onViewCreated called")
     }
 
     private fun setData() {
@@ -32,8 +32,7 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
         val tags = noteData?.getString("tags")
         val date = noteData?.getString("date")
         val id = noteData?.getString("id")
-        idOfCurrentNote = id?.trim()?.toInt() ?: 0
-        log(message = "idOfCurrentNote = $idOfCurrentNote")
+        idOfCurrentNote = id?.trim() ?: ""
         binding.textViewDetailedNoteTitle.text = title
         binding.textViewDetailedNoteText.text = text
         if (tags == null) {
@@ -48,7 +47,7 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
     private fun configureButtons() {
         val noteData = arguments
         binding.buttonDeleteNote.setOnClickListener {
-            val id = noteData?.getInt("id")
+            val id = noteData?.getString("id")
             if (id != null) {
                 viewModel.deleteNote(id)
                 closeScreen()
@@ -65,7 +64,7 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
             val tags = noteData?.getString("tags")
             val date = noteData?.getString("date")
             val note = Note(
-                id = idOfCurrentNote,
+                uuid = idOfCurrentNote,
                 title = title ?: "",
                 text = text ?: "",
                 tags = tags ?: "",
@@ -83,7 +82,7 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
         bundle.putString("text", note.text)
         bundle.putString("tags", note.tags)
         bundle.putString("date", note.dateOfCreation)
-        bundle.putInt("id", note.id)
+        bundle.putString("id", note.uuid)
         return bundle
     }
 

@@ -56,7 +56,7 @@ class NoteListFragment
         bundle.putString("text", note.text)
         bundle.putString("tags", note.tags)
         bundle.putString("date", note.dateOfCreation)
-        bundle.putInt("id", note.id)
+        bundle.putString("id", note.uuid)
         return bundle
     }
 

@@ -18,7 +18,7 @@ interface NotesDao {
     suspend fun addNote(note: Note)
 
     @Query("DELETE FROM notes WHERE id = :id")
-    suspend fun deleteNote(id: Int)
+    suspend fun deleteNote(id: String)
 
     @Query("SELECT * FROM tags")
     fun getTags(): LiveData<List<Tag>>

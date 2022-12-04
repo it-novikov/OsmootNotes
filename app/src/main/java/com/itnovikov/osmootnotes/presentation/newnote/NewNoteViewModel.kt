@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.itnovikov.osmootnotes.core.extension.log
 import com.itnovikov.osmootnotes.data.local.room.model.Note
 import com.itnovikov.osmootnotes.data.local.room.model.Tag
 import com.itnovikov.osmootnotes.domain.usecases.AddNoteUseCase
 import com.itnovikov.osmootnotes.domain.usecases.AddTagUseCase
-import com.itnovikov.osmootnotes.domain.usecases.GetNotesUseCase
 import com.itnovikov.osmootnotes.domain.usecases.GetTagsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,7 +19,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NewNoteViewModel @Inject constructor(
-    getNotesUseCase: GetNotesUseCase,
     getTagsUseCase: GetTagsUseCase,
     private val addNoteUseCase: AddNoteUseCase,
     private val addTagUseCase: AddTagUseCase
@@ -27,14 +26,13 @@ class NewNoteViewModel @Inject constructor(
 
     val tags: LiveData<List<Tag>> = getTagsUseCase.getTags()
 
-    private val allNotes: LiveData<List<Note>> = getNotesUseCase.getNotes()
-
     private val shouldCloseScreen = MutableLiveData<Boolean>()
     private val tagsArray = arrayListOf<Tag>()
 
     fun addNote(note: Note) {
         viewModelScope.launch {
             addNoteUseCase.addNote(note)
+            log(message = "id: ${note.uuid}")
             shouldCloseScreen.postValue(true)
         }
     }

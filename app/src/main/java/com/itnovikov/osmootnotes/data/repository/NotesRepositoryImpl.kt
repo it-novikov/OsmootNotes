@@ -11,7 +11,7 @@ class NotesRepositoryImpl @Inject constructor(private val notesDao : NotesDao) :
 
     override fun getNotes(): LiveData<List<Note>> = notesDao.getNotes()
 
-    override suspend fun deleteNote(id: Int) {
+    override suspend fun deleteNote(id: String) {
         notesDao.deleteNote(id)
     }
 

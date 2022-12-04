@@ -11,12 +11,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailedNoteViewModel @Inject constructor(
+
     private val deleteNoteUseCase: DeleteNoteUseCase
 ) : ViewModel() {
 
     private var shouldCloseScreen: MutableLiveData<Boolean> = MutableLiveData()
 
-    fun deleteNote(id: Int) {
+    fun deleteNote(id: String) {
         viewModelScope.launch {
             deleteNoteUseCase.deleteNote(id)
             shouldCloseScreen.postValue(true)

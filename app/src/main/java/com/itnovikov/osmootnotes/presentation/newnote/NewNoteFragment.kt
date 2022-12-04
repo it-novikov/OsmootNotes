@@ -2,7 +2,6 @@ package com.itnovikov.osmootnotes.presentation.newnote
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
@@ -16,6 +15,7 @@ import com.itnovikov.osmootnotes.data.local.room.model.Tag
 import com.itnovikov.osmootnotes.databinding.FragmentNewNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 
 @AndroidEntryPoint
@@ -71,7 +71,6 @@ class NewNoteFragment
             else {
                 val noteData = arguments
                 val clickedTagsList = noteData?.getString("tags")?.trim()?.split(", ")
-                Log.d("TAG", "clicked tags: $clickedTagsList")
                 for (tag in it) {
                     if (clickedTagsList != null) {
                         for (clickedTag in clickedTagsList) {
@@ -106,13 +105,12 @@ class NewNoteFragment
             val description = binding.editTextNoteDescription.text.toString().trim()
             val tags = viewModel.getNoteTagsList()
             val currentDate = getString(R.string.date_of_creation) + viewModel.getCurrentDate()
-            val id = arguments?.getString("id")?.trim()?.toInt() ?: 0
-            Log.d("TAG", "id: $id")
+            val id = arguments?.getString("id")?.trim() ?: UUID.randomUUID().toString()
             if (title.isEmpty()) showSnackbar(getString(R.string.title_is_empty))
             else if (description.isEmpty()) showSnackbar(getString(R.string.text_empty))
             else {
                 val note = Note(
-                    id = id,
+                    uuid = id,
                     title = title,
                     text = description,
                     tags = tags,

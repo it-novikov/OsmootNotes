@@ -6,7 +6,7 @@ import com.itnovikov.osmootnotes.data.local.room.model.Note
 class NoteListDiffCallback : DiffUtil.ItemCallback<Note>() {
 
     override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.uuid == newItem.uuid
     }
 
     override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {

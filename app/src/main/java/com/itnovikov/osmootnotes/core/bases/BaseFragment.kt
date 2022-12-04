@@ -50,7 +50,6 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(private val inflate
         observe(this@BaseFragment.viewLifecycleOwner) { t -> block.invoke(t) }
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         _viewBinding = null

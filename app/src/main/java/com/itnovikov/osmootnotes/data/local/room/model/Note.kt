@@ -3,22 +3,23 @@ package com.itnovikov.osmootnotes.data.local.room.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(tableName = "notes")
 data class Note(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    val id: Int = 0,
+    var uuid: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
 
     @ColumnInfo(name = "tags")
-    val tags: String = "",
+    var tags: String = "",
 
     @ColumnInfo(name = "text")
-    val text: String = "",
+    var text: String = "",
 
     @ColumnInfo(name = "dateOfCreation")
-    val dateOfCreation: String = ""
+    var dateOfCreation: String = ""
 )
