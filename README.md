@@ -3,17 +3,11 @@
 Стек технологий:
 
 – Kotlin
-
 – MVVM + Clean architecture
-
 – DI: Dagger Hilt
-
 – Room Database
-
 – Coroutines
-
 – Android Fragments
-
 – Navigation Component
 
 В приложение добавлен следующий функционал:
