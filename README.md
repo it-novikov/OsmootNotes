@@ -2,13 +2,13 @@
 
 Стек технологий:
 
-– Kotlin
-– MVVM + Clean architecture
-– DI: Dagger Hilt
-– Room Database
-– Coroutines
-– Android Fragments
-– Navigation Component
+1. Kotlin
+2. MVVM + Clean architecture
+3. DI: Dagger Hilt
+4. Room Database
+5. Coroutines
+6. Android Fragments
+7. Navigation Component
 
 В приложение добавлен следующий функционал:
 – Темная тема
