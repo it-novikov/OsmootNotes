@@ -5,7 +5,6 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.itnovikov.osmootnotes.R
 import com.itnovikov.osmootnotes.core.bases.BaseFragment
-import com.itnovikov.osmootnotes.core.extension.log
 import com.itnovikov.osmootnotes.data.local.room.model.Note
 import com.itnovikov.osmootnotes.databinding.FragmentDetailedNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,35 +15,25 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
 
     override val viewModel: DetailedNoteViewModel by viewModels()
 
-    private var idOfCurrentNote: String = ""
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configureButtons()
         setData()
-        log(message = "onViewCreated called")
     }
 
     private fun setData() {
         val noteData = arguments
-        val title = noteData?.getString("title")
-        val text = noteData?.getString("text")
-        val tags = noteData?.getString("tags")
-        val date = noteData?.getString("date")
-        val id = noteData?.getString("id")
-        idOfCurrentNote = id?.trim() ?: ""
-        binding.textViewDetailedNoteTitle.text = title
-        binding.textViewDetailedNoteText.text = text
-        if (tags == null) {
-            binding.textViewDetailedNoteTags.visibility = View.GONE
-        } else {
-            binding.textViewDetailedNoteTags.text = tags
+        viewModel.getDetailedNote(noteData?.getString("id") ?: "").observe {
+            binding.textViewDetailedNoteTitle.text = it.title
+            binding.textViewDetailedNoteText.text = it.text
+            binding.textViewDetailedNoteTags.text = it.tags
             binding.textViewDetailedNoteTags.visibility = View.VISIBLE
+            binding.textViewNoteCreationDate.text = it.dateOfCreation
+
+            configureButtons(it)
         }
-        binding.textViewNoteCreationDate.text = date
     }
 
-    private fun configureButtons() {
+    private fun configureButtons(note: Note) {
         val noteData = arguments
         binding.buttonDeleteNote.setOnClickListener {
             val id = noteData?.getString("id")
@@ -56,24 +45,12 @@ class DetailedNoteFragment : BaseFragment<FragmentDetailedNoteBinding, DetailedN
             }
         }
 
-        binding.buttonBackOnDetailedNote.setOnClickListener { navigateUp() }
-
-        binding.buttonEditNote.setOnClickListener {
-            val title = noteData?.getString("title")
-            val text = noteData?.getString("text")
-            val tags = noteData?.getString("tags")
-            val date = noteData?.getString("date")
-            val note = Note(
-                uuid = idOfCurrentNote,
-                title = title ?: "",
-                text = text ?: "",
-                tags = tags ?: "",
-                dateOfCreation = date ?: ""
-            )
-
+        binding.buttonEditNote.setOnClickListener { view ->
             val bundle = createBundle(note)
             navigateTo(R.id.newNoteFragment, bundle)
         }
+
+        binding.buttonBackOnDetailedNote.setOnClickListener { navigateUp() }
     }
 
     private fun createBundle(note: Note): Bundle {

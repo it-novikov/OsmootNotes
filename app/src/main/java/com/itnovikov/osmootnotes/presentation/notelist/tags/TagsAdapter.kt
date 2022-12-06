@@ -47,7 +47,11 @@ class TagsAdapter : ListAdapter<Tag, TagsAdapter.TagFiltersViewHolder>(TagFilter
             R.color.global_background
         ))
 
-        val font: Typeface = viewHolder.filterButton.context.resources.getFont(R.font.proxima_nova_bold)
+        val font: Typeface = viewHolder
+            .filterButton
+            .context
+            .resources
+            .getFont(R.font.proxima_nova_bold)
         viewHolder.filterButton.typeface = font
 
         viewHolder.filterButton.setCompoundDrawablesWithIntrinsicBounds(

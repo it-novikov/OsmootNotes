@@ -7,12 +7,11 @@ import com.itnovikov.osmootnotes.data.local.room.model.Tag
 interface NotesRepository {
 
     fun getNotes(): LiveData<List<Note>>
-
+    suspend fun getDetailedNote(id: String): Note
     suspend fun deleteNote(id: String)
     suspend fun addNote(note: Note)
 
     fun getTags(): LiveData<List<Tag>>
-
     suspend fun addTag(tag: Tag)
     suspend fun deleteTag(id: Int)
 }

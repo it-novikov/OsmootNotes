@@ -28,4 +28,8 @@ class NotesRepositoryImpl @Inject constructor(private val notesDao : NotesDao) :
     override suspend fun deleteTag(id: Int) {
         notesDao.deleteTag(id)
     }
+
+    override suspend fun getDetailedNote(id: String): Note {
+        return notesDao.getDetailedNote(id)
+    }
 }
